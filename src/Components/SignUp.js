@@ -131,6 +131,7 @@ const SignupForm = ({setIsLoggedIn}) => {
 
                         (<AiOutlineEye fontSize={24} fill='#AFB2BF'/>)}
                     </span>
+                    <p className="text-[10px] text-red-500 ">Min length of the password should be 6</p>
                 </label>
 
                 <label className='w-full relative'>
