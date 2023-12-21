@@ -1,10 +1,11 @@
 import React from 'react'
 import {Link} from "react-router-dom"
 import {toast} from "react-hot-toast"
-
+import { useSelector } from 'react-redux';
+import { AiOutlineLike } from "react-icons/ai";
 
 const Navbar = (props) => {
-
+    const {likes}=useSelector((state)=>state);
     let isLoggedIn = props.isLoggedIn;
     let setIsLoggedIn = props.setIsLoggedIn;
 
@@ -57,11 +58,12 @@ const Navbar = (props) => {
             }
              { isLoggedIn &&
                 <Link to="/likes">
-                    <button
-                     className='bg-richblack-800 text-richblack-100 py-[8px] 
-                    px-[12px] rounded-[8px] border border-richblack-700'>
-                       favorites
-                    </button>
+                   <div className="relative ">
+                <  AiOutlineLike className="absolute"/>
+                    <div className='absolute text-[16px] top-[-15px] left-2 text-green-500'>
+                       {likes.length} 
+                    </div>
+                </div>
                 </Link>
             }
         </div>

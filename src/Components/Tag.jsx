@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Spinner from './Spinner';
+import { useDispatch, useSelector } from 'react-redux';
+import {add,remove} from "../redux/slice/CardSlice"
 
 const API_KEY=process.env.REACT_APP_GIPHY_API_KEY;
 
@@ -9,6 +11,21 @@ const Tag = () => {
     const [image,setimage]=useState();
     const [loading,setloading]=useState(false);
     const [tag,settag]=useState('car');
+
+    const {likes}=useSelector((state)=>state);
+
+    console.log(likes);
+    const dispatch=useDispatch();
+
+    function additem(){
+        console.log("add");
+        dispatch(add(image));
+    }
+
+    function removeitem(){
+        console.log("remove");
+        dispatch(remove(image));
+    }
 
     async function ApiCall(){
         setloading(true);
@@ -40,7 +57,20 @@ const Tag = () => {
     <div className='lg:w-1/2 md:w-full bg-blue-500 mx-auto mt-[30px] rounded-lg flex flex-col items-center'>
             <h1 className='text-center text-2xl font-bold uppercase py-[10px]'>random gif</h1>
             {
-                loading?(<Spinner />):(<img src={image}/>)
+                loading?(<Spinner />):(   
+                <>
+                    <div>
+                     <img src={image}/>
+                     {
+                        likes.some((likes)=>likes===image)?(
+                            <button className='px-2 py-1 rounded-full border-2 bg-slate-500 text-white border-black text-[12px] bg-red-400' onClick={removeitem}>remove to likes</button>
+                        ):(
+                            <button className='px-2 py-1 rounded-full border-2 bg-slate-500 text-white border-black text-[12px] bg-green-400' onClick={additem}>Add to likes</button>
+                        )
+                    }
+                    </div>
+                </>
+                )
             }
             {/* (event=>settag(event.target.value)) */}
             <input className='w-11/12 py-[5px] text-center text-black rounded-2xl mt-[20px] mb-[5px]' placeholder='Enter text' type="text" onChange={textchangehandler} value={tag}></input> 
