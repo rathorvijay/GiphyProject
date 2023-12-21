@@ -14,7 +14,7 @@ const Likesimages = (props) => {
     return (
     <>
     <div className='flex w-full border-b-2 border-black p-3 h-3/12 gap-3'>
-        <div className='w-[30%]'>
+        <div className='lg:w-[30%] md:w-[70%]'>
             <img src={image} alt="not present" className='w-[90%] h-[90%]'></img>
         </div>
         <div className='w-[70%]'>

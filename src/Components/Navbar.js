@@ -10,10 +10,10 @@ const Navbar = (props) => {
     let setIsLoggedIn = props.setIsLoggedIn;
 
   return (
-    <div className='flex justify-between items-center w-11/12 max-w-[1160px] py-4 mx-auto text-white'>
+    <div className='flex justify-between items-center lg:w-11/12 md:w-11/12 max-w-[1160px] lg:py-4 md:py-2 mx-auto text-white'>
 
         <Link to="/"> 
-            <h1 className='text-2xl font-bold'>AlphaBI</h1>
+            <h1 className='text-2xl font-bold '>AlphaBI</h1>
         </Link>
 
 

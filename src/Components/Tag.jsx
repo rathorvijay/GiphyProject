@@ -54,18 +54,21 @@ const Tag = () => {
     },[])
 
   return (
-    <div className='lg:w-1/2 md:w-full bg-blue-500 mx-auto mt-[30px] rounded-lg flex flex-col items-center'>
+    <div className='lg:w-1/2 md:w-full  bg-blue-500 mx-auto md:p-3 mt-[30px] rounded-lg flex flex-col items-center'>
             <h1 className='text-center text-2xl font-bold uppercase py-[10px]'>random gif</h1>
             {
                 loading?(<Spinner />):(   
                 <>
                     <div>
-                     <img src={image}/>
+                     {/* <img className='w-1/2 h-5' src={image}/> */}
+                     <div className='lg:w-[30vw] lg:h-[30vh] md:w-[90vw] sm:w-[10vw] md:h-[20vh]'>
+                         <img src={image} alt="not present" className='lg:w-[100%] lg:h-[100%]'></img>
+                     </div>
                      {
                         likes.some((likes)=>likes===image)?(
-                            <button className='px-2 py-1 rounded-full border-2 bg-slate-500 text-white border-black text-[12px] bg-red-400' onClick={removeitem}>remove to likes</button>
+                            <button className='px-2 py-1 rounded-full border-2 text-white border-black text-[12px] bg-red-400' onClick={removeitem}>remove to likes</button>
                         ):(
-                            <button className='px-2 py-1 rounded-full border-2 bg-slate-500 text-white border-black text-[12px] bg-green-400' onClick={additem}>Add to likes</button>
+                            <button className='px-2 py-1 rounded-full border-2 text-white border-black text-[12px] bg-green-400' onClick={additem}>Add to likes</button>
                         )
                     }
                     </div>

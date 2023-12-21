@@ -22,7 +22,7 @@ const Likes = () => {
                     </div>
                ):( 
                <>
-                    <div className='w-[70%] shadow-none'>
+                    <div className='lg:w-[70%] md:w-11/12 shadow-none'>
                         {
                             likes.map((image,index)=>{
                                 return <Likesimages image={image}/>
